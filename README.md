@@ -30,7 +30,7 @@ Import the list into your firewall, IPS, or other security tooling using the raw
 
 ### iptables
 
-    curl -s https://raw.githubusercontent.com/<your-org>/blocked_ips/main/lists/blocked-ips.txt -o /etc/firewall/blocked-ips.txt
+    curl -s https://raw.githubusercontent.com/bmelim/blocked_ips/main/lists/blocked-ips.txt -o /etc/firewall/blocked-ips.txt
     while read ip; do
       iptables -A INPUT -s "$ip" -j DROP
     done < /etc/firewall/blocked-ips.txt
@@ -38,7 +38,7 @@ Import the list into your firewall, IPS, or other security tooling using the raw
 ### PostgreSQL
 
     COPY blocked_ips (ip)
-    FROM PROGRAM 'curl -s https://raw.githubusercontent.com/<your-org>/blocked_ips/main/lists/blocked-ips.txt'
+    FROM PROGRAM 'curl -s https://raw.githubusercontent.com/bmelim/blocked_ips/main/lists/blocked-ips.txt'
     WITH (FORMAT text);
 
 ### Sophos XGS (Active Threat Response)
